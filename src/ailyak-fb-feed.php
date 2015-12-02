@@ -151,7 +151,8 @@ function ailyak_facebook_group_feed()
             $postId = $post['id'];
             $postName = $post['from']['name'];
             $message = nl2br($post['message']);
-            $postTime = (new \DateTime($post['created_time']))->format("M, d, D, G:h");
+            $postTimeDatetime = new \DateTime($post['created_time']);
+            $postTime = $postTimeDatetime->format("M, d, D, G:h");
             $postLink = $post['actions'][0]['link'];
             
             $return .= '
@@ -172,7 +173,8 @@ function ailyak_facebook_group_feed()
                     $commentId = $comment['id'];
                     $commentFromName = $comment['from']['name'];
                     $commentMessage = nl2br($comment['message']);
-                    $commentDate = (new \DateTime($comment['created_time']))->format("M, d, D, G:h");
+                    $commentDateDatetime = new \DateTime($comment['created_time']);
+                    $commentDate = $commentDateDatetime->format("M, d, D, G:h");
                     $return .= '
                         <div class="fbgreybox fbcommentreply">  
                             <div>
